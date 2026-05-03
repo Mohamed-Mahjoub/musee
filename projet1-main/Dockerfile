@@ -1,5 +1,9 @@
-FROM openjdk:8-jre
+FROM eclipse-temurin:17-jre
 
-COPY *.jar myapp.jar
+WORKDIR /app
 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/.urandom","-jar","/myapp.jar"]
+COPY target/*.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
